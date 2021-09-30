@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class Number {
 
+    private static final String NUMBER_CHECK_REGEX = "-?\\d+(\\.\\d+)?";
+
     private final Integer number;
 
     private Number(final String numberText) {
@@ -25,10 +27,8 @@ public class Number {
         }
     }
 
-    public void checkNumeric(final String numberText) {
-        try {
-            Integer.parseInt(numberText);
-        } catch (NumberFormatException nfe) {
+    private void checkNumeric(final String numbersText) {
+        if (!numbersText.matches(NUMBER_CHECK_REGEX)) {
             throw new NumberFormatException();
         }
     }
