@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import baseball.domain.strategy.NumberGenerationStrategy;
+import baseball.domain.strategys.NumberGenerationStrategy;
 
 public class BaseBallGame {
 
