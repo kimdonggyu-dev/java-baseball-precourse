@@ -10,26 +10,29 @@ public class Number {
 
     private final Integer number;
 
-    private Number(final String numberText) {
-        checkNumeric(numberText);
-        checkRangeNumber(numberText);
-        this.number = Integer.parseInt(numberText);
+    private Number(final Integer number) {
+        checkRangeNumber(number);
+        this.number = number;
     }
 
     public static Number of(final String numberText) {
-        return new Number(numberText);
+        checkNumeric(numberText);
+        return new Number(Integer.parseInt(numberText));
     }
 
-    private void checkRangeNumber(final String numberText) {
-        int number = Integer.parseInt(numberText);
-        if (number <= 0 || number >= 10) {
-            throw new NotValidRangeNumberException();
+    public static Number of(final Integer number) {
+        return new Number(number);
+    }
+
+    private static void checkNumeric(final String numbersText) {
+        if (!numbersText.matches(NUMBER_CHECK_REGEX)) {
+            throw new NumberFormatException();
         }
     }
 
-    private void checkNumeric(final String numbersText) {
-        if (!numbersText.matches(NUMBER_CHECK_REGEX)) {
-            throw new NumberFormatException();
+    private void checkRangeNumber(final int number) {
+        if (number <= 0 || number >= 10) {
+            throw new NotValidRangeNumberException();
         }
     }
 

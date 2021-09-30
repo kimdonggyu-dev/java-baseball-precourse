@@ -1,16 +1,16 @@
 package baseball.domain;
 
-import baseball.domain.strategys.NumberGenerationStrategy;
+import baseball.domain.strategys.NumbersGenerationStrategy;
 
 public class BaseBallGame {
 
-    private final NumberGenerationStrategy rule;
+    private final Numbers numbers;
 
-    public BaseBallGame(final NumberGenerationStrategy rule) {
-        this.rule = rule;
+    public BaseBallGame(final NumbersGenerationStrategy rule) {
+        this.numbers = rule.generate();
     }
 
-    public Scores run(final String number) {
-        return null;
+    public Scores match(final String numbersText) {
+        return numbers.match(Numbers.of(numbersText));
     }
 }

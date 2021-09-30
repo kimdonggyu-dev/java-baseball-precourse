@@ -2,7 +2,7 @@ package baseball.domain.strategys;
 
 import baseball.domain.Numbers;
 
-public interface NumberGenerationStrategy {
+public interface NumbersGenerationStrategy {
 
     Numbers generate();
 }
