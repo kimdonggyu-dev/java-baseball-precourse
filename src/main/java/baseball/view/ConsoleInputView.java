@@ -9,9 +9,9 @@ public class ConsoleInputView {
         return Console.readLine();
     }
 
-    public boolean checkNextGame() {
+    public boolean isContinueNextGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Console.readLine().equals("1");
+        String s = Console.readLine();
+        return s.equals("1");
     }
-
 }
