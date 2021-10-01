@@ -6,9 +6,9 @@ import baseball.domain.strategys.NumbersGenerationStrategy;
 
 public class BaseBallGame {
 
-    private final NumbersGenerationStrategy rule;
+    private NumbersGenerationStrategy rule;
     private Numbers numbers;
-
+    private boolean isFinish;
 
     public BaseBallGame(final NumbersGenerationStrategy rule) {
         this.rule = rule;
@@ -16,10 +16,19 @@ public class BaseBallGame {
     }
 
     public Scores match(final String numbersText) {
-        return numbers.match(Numbers.of(numbersText));
+        Scores scores = numbers.match(Numbers.of(numbersText));
+        if (scores.isFinish()) {
+            this.isFinish = true;
+        }
+        return scores;
+    }
+
+    public boolean isFinish() {
+        return this.isFinish;
     }
 
     public void clear() {
+        this.isFinish = false;
         this.numbers = rule.generate();
     }
 }

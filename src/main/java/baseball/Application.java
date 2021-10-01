@@ -14,22 +14,20 @@ public class Application {
         ConsoleOutputView outputView = new ConsoleOutputView();
 
         BaseBallGame baseBallGame = new BaseBallGame(new RandomNumbersGenerationStrategy());
-        boolean isFinish;
 
         do {
-            isFinish = playGame(inputView, outputView, baseBallGame);
-        } while (!isFinish(isFinish, inputView, outputView, baseBallGame));
+            playGame(inputView, outputView, baseBallGame);
+        } while (!isFinish(inputView, outputView, baseBallGame));
     }
 
-    private static boolean playGame(ConsoleInputView inputView, ConsoleOutputView outputView, BaseBallGame baseBallGame) {
+    private static void playGame(final ConsoleInputView inputView, final ConsoleOutputView outputView, final BaseBallGame baseBallGame) {
         String numbersText = inputView.enterNumber();
         Scores scores = baseBallGame.match(numbersText);
         outputView.print(scores);
-        return scores.isFinish();
     }
 
-    private static boolean isFinish(final boolean isFinish, final ConsoleInputView inputView, final ConsoleOutputView outputView, final BaseBallGame baseBallGame) {
-        if (!isFinish) {
+    private static boolean isFinish(final ConsoleInputView inputView, final ConsoleOutputView outputView, final BaseBallGame baseBallGame) {
+        if (!baseBallGame.isFinish()) {
             return false;
         }
         outputView.printFinish();
