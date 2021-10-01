@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.domain.numbers.Numbers;
+import baseball.domain.scores.Scores;
 import baseball.domain.strategys.NumbersGenerationStrategy;
 
 public class BaseBallGame {

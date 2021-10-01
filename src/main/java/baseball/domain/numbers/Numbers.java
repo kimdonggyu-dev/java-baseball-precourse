@@ -1,20 +1,20 @@
-package baseball.domain;
+package baseball.domain.numbers;
 
-import baseball.domain.exceptions.DuplicatedNumberException;
-import baseball.domain.exceptions.NotValidNumberLengthException;
+import baseball.domain.matchs.MatchResults;
+import baseball.domain.numbers.exceptions.DuplicatedNumberException;
+import baseball.domain.numbers.exceptions.NotValidNumberLengthException;
+import baseball.domain.scores.Scores;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Numbers {
 
     private static final String NUMBER_TEXT_SPLIT_REGEX = "";
     private static final String NUMBER_CHECK_REGEX = "-?\\d+(\\.\\d+)?";
 
-    private final Set<Number> numbers;
+    private final List<Number> numbers;
 
-    private Numbers(final Set<Number> numbers) {
+    private Numbers(final List<Number> numbers) {
         checkDuplicateNumber(numbers);
         this.numbers = numbers;
     }
@@ -23,11 +23,11 @@ public class Numbers {
         checkBlank(numbersText);
         checkNumeric(numbersText);
         checkNumberLength(numbersText);
-        Set<Number> numbers = toNumberSet(numbersText.split(NUMBER_TEXT_SPLIT_REGEX));
+        List<Number> numbers = generateNumbers(numbersText.split(NUMBER_TEXT_SPLIT_REGEX));
         return new Numbers(numbers);
     }
 
-    public static Numbers of(final Set<Number> numbers) {
+    public static Numbers of(final List<Number> numbers) {
         return new Numbers(numbers);
     }
 
@@ -49,22 +49,24 @@ public class Numbers {
         }
     }
 
-    private static void checkDuplicateNumber(final Set<Number> numbers) {
-        if (numbers.size() != 3) {
+    private static void checkDuplicateNumber(final List<Number> numbers) {
+        Set<Number> set = new HashSet<>(numbers);
+        if (set.size() != 3) {
             throw new DuplicatedNumberException();
         }
     }
 
-    private static Set<Number> toNumberSet(final String[] numberTexts) {
-        Set<Number> numbers = new HashSet<>();
+    private static List<Number> generateNumbers(final String[] numberTexts) {
+        List<Number> numbers = new ArrayList<>();
         for (String number : numberTexts) {
             numbers.add(Number.of(number));
         }
         return numbers;
     }
 
-    public Scores match(Numbers numbers) {
-        return null;
+    public Scores match(final Numbers matchNumbers) {
+        MatchResults matchResults = MatchResults.match(this.numbers, matchNumbers.numbers);
+        return matchResults.calculate();
     }
 
     @Override

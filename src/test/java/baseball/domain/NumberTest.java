@@ -1,6 +1,7 @@
 package baseball.domain;
 
-import baseball.domain.exceptions.NotValidRangeNumberException;
+import baseball.domain.numbers.Number;
+import baseball.domain.numbers.exceptions.NotValidRangeNumberException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;

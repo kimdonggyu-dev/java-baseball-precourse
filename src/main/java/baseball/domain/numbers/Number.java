@@ -1,6 +1,6 @@
-package baseball.domain;
+package baseball.domain.numbers;
 
-import baseball.domain.exceptions.NotValidRangeNumberException;
+import baseball.domain.numbers.exceptions.NotValidRangeNumberException;
 
 import java.util.Objects;
 

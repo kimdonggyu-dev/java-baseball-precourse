@@ -1,6 +1,6 @@
 package baseball.domain.strategys;
 
-import baseball.domain.Numbers;
+import baseball.domain.numbers.Numbers;
 
 public interface NumbersGenerationStrategy {
 

@@ -1,9 +1,10 @@
 package baseball.domain.strategys;
 
-import baseball.domain.Number;
-import baseball.domain.Numbers;
+import baseball.domain.numbers.Number;
+import baseball.domain.numbers.Numbers;
 import nextstep.utils.Randoms;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +17,6 @@ public class RandomNumbersGenerationStrategy implements NumbersGenerationStrateg
             int number = Randoms.pickNumberInRange(1, 9);
             numbers.add(Number.of(number));
         }
-        return Numbers.of(numbers);
+        return Numbers.of(new ArrayList<>(numbers));
     }
 }

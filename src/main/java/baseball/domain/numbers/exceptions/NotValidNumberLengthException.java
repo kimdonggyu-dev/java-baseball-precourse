@@ -1,4 +1,4 @@
-package baseball.domain.exceptions;
+package baseball.domain.numbers.exceptions;
 
 public class NotValidNumberLengthException extends RuntimeException {
 
