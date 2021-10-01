@@ -81,4 +81,11 @@ public class Numbers {
     public int hashCode() {
         return Objects.hash(numbers);
     }
+
+    @Override
+    public String toString() {
+        return "Numbers{" +
+                "numbers=" + numbers +
+                '}';
+    }
 }

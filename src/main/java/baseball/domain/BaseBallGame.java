@@ -6,13 +6,20 @@ import baseball.domain.strategys.NumbersGenerationStrategy;
 
 public class BaseBallGame {
 
-    private final Numbers numbers;
+    private final NumbersGenerationStrategy rule;
+    private Numbers numbers;
+
 
     public BaseBallGame(final NumbersGenerationStrategy rule) {
+        this.rule = rule;
         this.numbers = rule.generate();
     }
 
     public Scores match(final String numbersText) {
         return numbers.match(Numbers.of(numbersText));
+    }
+
+    public void clear() {
+        this.numbers = rule.generate();
     }
 }

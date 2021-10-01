@@ -1,5 +1,6 @@
 package baseball.domain.scores;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,6 +11,25 @@ public class Scores {
     public Scores(final List<Score> scores) {
         this.scores = scores;
         this.scores.sort(null);
+    }
+
+    public int strike() {
+        return Collections.frequency(scores, Score.STRIKE);
+    }
+
+    public int ball() {
+        return Collections.frequency(scores, Score.BALL);
+    }
+
+    public boolean isFinish() {
+        if (strike() == 3) {
+            return true;
+        }
+        return false;
+    }
+
+    public List<Score> elements() {
+        return Collections.unmodifiableList(scores);
     }
 
     @Override
