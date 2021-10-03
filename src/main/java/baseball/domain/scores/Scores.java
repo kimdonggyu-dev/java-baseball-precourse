@@ -28,10 +28,6 @@ public class Scores {
         return false;
     }
 
-    public List<Score> elements() {
-        return Collections.unmodifiableList(scores);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

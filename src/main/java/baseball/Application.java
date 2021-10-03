@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.BaseBallGame;
+import baseball.domain.numbers.exceptions.BusinessException;
 import baseball.domain.scores.Scores;
 import baseball.domain.strategys.RandomNumbersGenerationStrategy;
 import baseball.view.ConsoleInputView;
@@ -21,9 +22,13 @@ public class Application {
     }
 
     private static void playGame(final ConsoleInputView inputView, final ConsoleOutputView outputView, final BaseBallGame baseBallGame) {
-        String numbersText = inputView.enterNumber();
-        Scores scores = baseBallGame.match(numbersText);
-        outputView.print(scores);
+        try {
+            String numbersText = inputView.enterNumber();
+            Scores scores = baseBallGame.match(numbersText);
+            outputView.print(scores);
+        } catch (BusinessException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 
     private static boolean isFinish(final ConsoleInputView inputView, final ConsoleOutputView outputView, final BaseBallGame baseBallGame) {
