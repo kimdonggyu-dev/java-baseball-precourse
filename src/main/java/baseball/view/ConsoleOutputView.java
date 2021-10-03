@@ -12,14 +12,18 @@ public class ConsoleOutputView {
             System.out.println("낫싱");
             return;
         }
+        System.out.println(scoresText(strike, ball));
+    }
+
+    private String scoresText(final int strike, final int ball) {
         StringBuilder sb = new StringBuilder();
         if (strike != 0) {
-            sb.append(strike + "스트라이크 ");
+            sb.append(strike).append("스트라이크 ");
         }
         if (ball != 0) {
-            sb.append(ball + "볼");
+            sb.append(ball).append("볼");
         }
-        System.out.println(sb);
+        return sb.toString();
     }
 
     public void printFinish() {
