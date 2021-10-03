@@ -1,5 +1,8 @@
 package baseball.domain.scores;
 
+
+import baseball.domain.scores.exception.InvalidScoresSizeException;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -9,8 +12,15 @@ public class Scores {
     private final List<Score> scores;
 
     public Scores(final List<Score> scores) {
+        checkScoreSize(scores);
         this.scores = scores;
-        this.scores.sort(null);
+        Collections.sort(this.scores);
+    }
+
+    private void checkScoreSize(List<Score> scores) {
+        if (scores.size() >= 4 || scores.size() <= 0) {
+            throw new InvalidScoresSizeException();
+        }
     }
 
     public int strike() {
