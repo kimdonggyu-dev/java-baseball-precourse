@@ -3,6 +3,7 @@ package baseball.domain.numbers;
 import baseball.domain.matchs.MatchResults;
 import baseball.domain.numbers.exceptions.DuplicatedNumberException;
 import baseball.domain.numbers.exceptions.NotValidNumberLengthException;
+import baseball.domain.numbers.exceptions.NumberTextBlankException;
 import baseball.domain.scores.Scores;
 
 import java.util.*;
@@ -33,7 +34,7 @@ public class Numbers {
 
     private static void checkBlank(final String numbersText) {
         if (numbersText == null || "".equals(numbersText)) {
-            throw new IllegalArgumentException();
+            throw new NumberTextBlankException();
         }
     }
 

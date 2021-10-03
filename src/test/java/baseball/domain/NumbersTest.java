@@ -5,6 +5,7 @@ import baseball.domain.numbers.Numbers;
 import baseball.domain.numbers.exceptions.DuplicatedNumberException;
 import baseball.domain.numbers.exceptions.NotValidNumberLengthException;
 import baseball.domain.numbers.exceptions.NotValidRangeNumberException;
+import baseball.domain.numbers.exceptions.NumberTextBlankException;
 import baseball.domain.scores.Score;
 import baseball.domain.scores.Scores;
 import org.junit.jupiter.api.Test;
@@ -65,7 +66,7 @@ class NumbersTest {
     @ParameterizedTest
     @NullAndEmptySource
     void 입력값이_공백이거나_널일경우(final String numbersText) {
-        assertThrows(IllegalArgumentException.class, () -> Numbers.of(numbersText));
+        assertThrows(NumberTextBlankException.class, () -> Numbers.of(numbersText));
     }
 
     @ParameterizedTest
